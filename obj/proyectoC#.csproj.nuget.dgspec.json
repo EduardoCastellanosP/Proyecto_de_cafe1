@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\julia\\proyectoC#\\proyectoC#.csproj": {}
+    "C:\\Users\\julia\\Proyecto_de_cafe1\\proyectoC#.csproj": {}
   },
   "projects": {
-    "C:\\Users\\julia\\proyectoC#\\proyectoC#.csproj": {
+    "C:\\Users\\julia\\Proyecto_de_cafe1\\proyectoC#.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julia\\proyectoC#\\proyectoC#.csproj",
+        "projectUniqueName": "C:\\Users\\julia\\Proyecto_de_cafe1\\proyectoC#.csproj",
         "projectName": "proyectoC#",
-        "projectPath": "C:\\Users\\julia\\proyectoC#\\proyectoC#.csproj",
+        "projectPath": "C:\\Users\\julia\\Proyecto_de_cafe1\\proyectoC#.csproj",
         "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julia\\proyectoC#\\obj\\",
+        "outputPath": "C:\\Users\\julia\\Proyecto_de_cafe1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,6 +43,38 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[9.4.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[9.0.0-rc.1.efcore.9.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
