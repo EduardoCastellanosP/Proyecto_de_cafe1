@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using proyectc_.src.Modules.Variedades.UI;
+using proyectoC_.src.Modules.Variedades.UI;
 using proyectoC_.src.Modules.Usuarios.Application.Services;
 using proyectoC_.src.Modules.Usuarios.Domain.Entities;
 using proyectoC_.src.Modules.Usuarios.Infrastructure.Repositories;

@@ -6,7 +6,7 @@ using proyectoC_.src.Modules.Variedades.Domain.Entities;
 
 namespace proyectoC_.src.Modules.Variedades.Application.Interfaces
 {
-    public interface IvariedadService
+    public interface IVariedadService
     {
         Task RegistrarVariedadAsync(string nombre);
         Task<IEnumerable<Variedad?>> ConsultarVariedadAsync();

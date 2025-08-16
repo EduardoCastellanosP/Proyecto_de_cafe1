@@ -7,7 +7,7 @@ using proyectoC_.src.Modules.Variedades.Domain.Entities;
 
 namespace proyectoC_.src.Modules.Variedades.Application.Services
 {
-    public class VariedadService : IvariedadService
+    public class VariedadService : IVariedadService
     {
         private readonly IVariedadRepository _repo;
 
@@ -175,7 +175,7 @@ namespace proyectoC_.src.Modules.Variedades.Application.Services
             return await _repo.GetByNombreAsync(nombre);
         }
 
-        Task<Variedad?> IvariedadService.GetVariedadPorIdAsync(int id)
+        Task<Variedad?> IVariedadService.GetVariedadPorIdAsync(int id)
         {
             return _repo.GetByIdAsync(id);
         }
