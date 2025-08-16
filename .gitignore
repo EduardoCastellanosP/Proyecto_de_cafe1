@@ -1,6 +1,114 @@
+
+=======
+############################
+# .NET / Visual Studio
+############################
 bin/
 obj/
+[Bb]uild/
+[Ll]og/
+[Ll]ogs/
+artifacts/
+*.log
+*.tlog
+*.blame
+*.pidb
+*.pdb
+*.svclog
+*.scc
+*.cache
+*.cachefile
+*.dbmdl
+*.jfm
+*.psess
+*.vsp
+*.vspx
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+############################
+# VS (.vs folder)
+############################
 .vs/
+
+############################
+# Rider / JetBrains
+############################
+.idea/
+*.sln.iml
+
+############################
+# VS Code (opcional)
+# Si quieres versionar ajustes de VS Code, elimina estas líneas
+############################
+.vscode/
+
+############################
+# Test / Coverage
+############################
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+*.codecoverage
+*.gpState
+BenchmarkDotNet.Artifacts/
+
+############################
+# NuGet
+############################
+packages/
+*.nupkg
+*.snupkg
+*.nuspec
+.nuget/
+
+############################
+# Publicación / Publish (opcional)
+############################
+**/Properties/PublishProfiles/*
+# Ignora config locales/secretos pero mantiene el base:
+appsettings.*.json
+!appsettings.json
+# Si prefieres versionar appsettings.Development.json, quita la línea anterior.
+
+############################
+# Node / SPA (si aplica)
+############################
+node_modules/
+bower_components/
+wwwroot/node_modules/
+wwwroot/lib/
+dist/
+build/
+
+############################
+# SO / Editor
+############################
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+# Linux
+*~
+
+############################
+# Misceláneo
+############################
+*.tmp
+*.temp
+*.orig
+>>>>>>> origin/develop
 bin/
 obj/
 .vs/
