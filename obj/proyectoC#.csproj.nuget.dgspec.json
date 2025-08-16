@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\EQUIPO\\Proyecto_de_cafe1\\proyectoC#.csproj": {}
+    "C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\proyectoC#.csproj": {}
   },
   "projects": {
-    "C:\\Users\\EQUIPO\\Proyecto_de_cafe1\\proyectoC#.csproj": {
+    "C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\proyectoC#.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\EQUIPO\\Proyecto_de_cafe1\\proyectoC#.csproj",
+        "projectUniqueName": "C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\proyectoC#.csproj",
         "projectName": "proyectoC#",
-        "projectPath": "C:\\Users\\EQUIPO\\Proyecto_de_cafe1\\proyectoC#.csproj",
-        "packagesPath": "C:\\Users\\EQUIPO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\EQUIPO\\Proyecto_de_cafe1\\obj\\",
+        "projectPath": "C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\proyectoC#.csproj",
+        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\EQUIPO\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -43,6 +43,38 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[9.4.0, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[9.0.0-rc.1.efcore.9.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -59,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
