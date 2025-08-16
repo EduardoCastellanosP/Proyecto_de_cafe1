@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using MySqlConnector;
 
-namespace proyectoC_.src.Shared.Helpers
-{
+namespace proyectoC_.src.Shared.Helpers;
+
     public class MySqlVersionResolver
     {
-         public static Version DetectVersion(string connectionString)
+        public static Version DetectVersion(string connectionString)
         {
             using var conn = new MySqlConnection(connectionString);
             conn.Open();
@@ -17,4 +17,3 @@ namespace proyectoC_.src.Shared.Helpers
             return Version.Parse(clean);
         }
     }
-}
