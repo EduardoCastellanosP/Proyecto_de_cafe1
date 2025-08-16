@@ -78,5 +78,15 @@
     "C:\\Users\\USUARIO\\.nuget\\packages\\system.windows.extensions\\8.0.0\\system.windows.extensions.8.0.0.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\zstdsharp.port\\0.8.5\\zstdsharp.port.0.8.5.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\proyectoC#.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\proyectoC#.csproj",
+      "targetGraphs": []
+    }
+  ]
 }
