@@ -8,19 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\julia\\.nuget\\packages\\": {}
+    "C:\\Users\\USUARIO\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\julia\\proyectoC#\\proyectoC#.csproj",
+      "projectUniqueName": "C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\proyectoC#.csproj",
       "projectName": "proyectoC#",
-      "projectPath": "C:\\Users\\julia\\proyectoC#\\proyectoC#.csproj",
-      "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\julia\\proyectoC#\\obj\\",
+      "projectPath": "C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\proyectoC#.csproj",
+      "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USUARIO\\OneDrive\\Pictures\\Proyecto_de_cafe1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
