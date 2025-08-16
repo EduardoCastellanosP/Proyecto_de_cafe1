@@ -2,17 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-namespace proyectoC_.src.Modules.Usuarios.UI
-{
-    public class MenuUsuarios
-    {
-        
-    }
-}using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using proyectc_.src.Modules.Variedades.UI;
 using proyectoC_.src.Modules.Usuarios.Application.Services;
 using proyectoC_.src.Modules.Usuarios.Domain.Entities;
