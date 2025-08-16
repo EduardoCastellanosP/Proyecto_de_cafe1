@@ -8,19 +8,19 @@
     "net9.0": []
   },
   "packageFolders": {
-    "C:\\Users\\julia\\.nuget\\packages\\": {}
+    "C:\\Users\\EQUIPO\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\julia\\proyectoC#\\proyectoC#.csproj",
+      "projectUniqueName": "C:\\Users\\EQUIPO\\Proyecto_de_cafe1\\proyectoC#.csproj",
       "projectName": "proyectoC#",
-      "projectPath": "C:\\Users\\julia\\proyectoC#\\proyectoC#.csproj",
-      "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\julia\\proyectoC#\\obj\\",
+      "projectPath": "C:\\Users\\EQUIPO\\Proyecto_de_cafe1\\proyectoC#.csproj",
+      "packagesPath": "C:\\Users\\EQUIPO\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\EQUIPO\\Proyecto_de_cafe1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\EQUIPO\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -65,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
