@@ -4,15 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using proyectoC_.src.Shared.Context;
-using proyectoC_.src.Modules.Variedades.Application.Interfaces;
 using proyectoC_.src.Modules.Variedades.Application.Services;
 using proyectoC_.src.Modules.Variedades.Domain.Entities;
 using proyectoC_.src.Modules.Variedades.Infrastructure.Repositories;
 using proyectoC_.src.Modules.Pdf.UI;
+using proyectoC_.src.Modules.Variedades.Application.Interfaces;
 
-namespace proyectc_.src.Modules.Variedades.UI
+
+namespace proyectoC_.src.Modules.Variedades.UI
 {
-   
+
     public class MenuVariedades
     {
         private readonly AppDbContext _context;
@@ -24,8 +25,8 @@ namespace proyectc_.src.Modules.Variedades.UI
             _context = context;
             _repo = new VariedadRepository(context);
             _service = new VariedadService(_repo);
-            
-           
+
+
         }
 
         public async Task RenderMenu()
@@ -78,129 +79,129 @@ namespace proyectc_.src.Modules.Variedades.UI
             }
         }
 
-       
-    private static async Task MostrarAsync(IVariedadService service)
-    {
-        while (true)
+
+        private static async Task MostrarAsync(IVariedadService service)
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("========== MENU CAFES ==========");
+                Console.WriteLine("1) Ver lista de cafés");
+                Console.WriteLine("2) Ver ficha técnica por ID");
+                Console.WriteLine("0) Volver / Salir");
+                Console.Write("Seleccione una opción: ");
+                var op = Console.ReadLine()?.Trim();
+
+                switch (op)
+                {
+                    case "1":
+                        await ListarCafesAsync(service);
+                        break;
+
+                    case "2":
+                        await VerFichaPorIdAsync((VariedadService)service);
+                        break;
+
+                    case "0":
+                        return;
+
+                    default:
+                        Console.WriteLine("Opción inválida.");
+                        Pausa();
+                        break;
+                }
+            }
+        }
+
+        private static async Task ListarCafesAsync(IVariedadService service)
         {
             Console.Clear();
-            Console.WriteLine("========== MENU CAFES ==========");
-             Console.WriteLine("1) Ver lista de cafés");
-             Console.WriteLine("2) Ver ficha técnica por ID");
-             Console.WriteLine("0) Volver / Salir");
-            Console.Write("Seleccione una opción: ");
-             var op = Console.ReadLine()?.Trim();
+            Console.WriteLine("========== CAFES DISPONIBLES ==========\n");
 
-            switch (op)
+            var todos = (await service.ConsultarVariedadAsync())
+                .OrderBy(v => v.Nombre)
+                .ToList();
+
+            if (todos.Count == 0)
             {
-                case "1":
-                     await ListarCafesAsync(service);
-                     break;
+                Console.WriteLine("No hay variedades registradas.");
+                Pausa();
+                return;
+            }
 
-            case "2":
-                    await VerFichaPorIdAsync((VariedadService)service);
-                    break;
+            Console.WriteLine("ID   Nombre");
+            Console.WriteLine("------------------------------");
+            foreach (var v in todos)
+                Console.WriteLine($"{v.Id,-4} {v.Nombre}");
 
-             case "0":
-                    return;
-
-                 default:
-                     Console.WriteLine("Opción inválida.");
-                    Pausa();
-                    break;
-             }
-        }
-     }
-
-    private static async Task ListarCafesAsync(IVariedadService service)
-    {
-        Console.Clear();
-        Console.WriteLine("========== CAFES DISPONIBLES ==========\n");
-
-        var todos = (await service.ConsultarVariedadAsync())
-            .OrderBy(v => v.Nombre)
-            .ToList();
-
-        if (todos.Count == 0)
-        {
-            Console.WriteLine("No hay variedades registradas.");
             Pausa();
-            return;
         }
 
-        Console.WriteLine("ID   Nombre");
-        Console.WriteLine("------------------------------");
-        foreach (var v in todos)
-            Console.WriteLine($"{v.Id,-4} {v.Nombre}");
+        private static async Task VerFichaPorIdAsync(IVariedadService service)
+        {
+            const int WIDTH = 59; // ancho del cuadro (ajústalo si quieres)
+            string Top() => "┌" + new string('─', WIDTH - 2) + "┐";
+            string Sep() => "├" + new string('─', WIDTH - 2) + "┤";
+            string Bottom() => "└" + new string('─', WIDTH - 2) + "┘";
+            string Row(string s)
+            {
+                // sin comillas, recorta y rellena derecha
+                s = s ?? "";
+                if (s.Length > WIDTH - 4) s = s.Substring(0, WIDTH - 4);
+                return "│ " + s.PadRight(WIDTH - 4) + " │";
+            }
 
-        Pausa();
-    }
+            Console.Clear();
+            Console.Write("Ingrese el ID de la variedad: ");
+            if (!int.TryParse(Console.ReadLine(), out int id))
+            {
+                Console.WriteLine("ID inválido.");
+                Pausa();
+                return;
+            }
 
-   private static async Task VerFichaPorIdAsync(IVariedadService service)
-{
-    const int WIDTH = 59; // ancho del cuadro (ajústalo si quieres)
-    string Top()        => "┌" + new string('─', WIDTH - 2) + "┐";
-    string Sep()        => "├" + new string('─', WIDTH - 2) + "┤";
-    string Bottom()     => "└" + new string('─', WIDTH - 2) + "┘";
-    string Row(string s)
-    {
-        // sin comillas, recorta y rellena derecha
-        s = s ?? "";
-        if (s.Length > WIDTH - 4) s = s.Substring(0, WIDTH - 4);
-        return "│ " + s.PadRight(WIDTH - 4) + " │";
-    }
+            var v = await service.GetVariedadPorIdAsync(id);
+            if (v == null)
+            {
+                Console.WriteLine($"No se encontró una variedad con ID {id}.");
+                Pausa();
+                return;
+            }
 
-    Console.Clear();
-    Console.Write("Ingrese el ID de la variedad: ");
-    if (!int.TryParse(Console.ReadLine(), out int id))
-    {
-        Console.WriteLine("ID inválido.");
-        Pausa();
-        return;
-    }
+            Console.Clear();
+            Console.WriteLine(Top());
+            Console.WriteLine(Row($"📜 Ficha técnica – Variedad (ID: {v.Id})"));
+            Console.WriteLine(Sep());
 
-    var v = await service.GetVariedadPorIdAsync(id);
-    if (v == null)
-    {
-        Console.WriteLine($"No se encontró una variedad con ID {id}.");
-        Pausa();
-        return;
-    }
+            Console.WriteLine(Row($"Nombre: {v.Nombre}"));
+            Console.WriteLine(Row($"Nombre científico: {v.NombreCientifico?.Nombre ?? "-"}"));
+            Console.WriteLine(Sep());
 
-    Console.Clear();
-    Console.WriteLine(Top());
-    Console.WriteLine(Row($"📜 Ficha técnica – Variedad (ID: {v.Id})"));
-    Console.WriteLine(Sep());
+            Console.WriteLine(Row($"Porte: {v.Porte?.Nombre ?? "-"}"));
+            Console.WriteLine(Row($"Tamaño de grano: {v.TamanoGrano?.Nombre ?? "-"}"));
+            Console.WriteLine(Row($"Altitud óptima: {v.AltitudOptima?.Nombre ?? "-"}"));
+            Console.WriteLine(Row($"Rendimiento: {v.Potencial?.Nombre ?? "-"}"));
+            Console.WriteLine(Row($"Calidad-altitud: {v.CalidadGrano?.Nombre ?? "-"}"));
+            Console.WriteLine(Sep());
 
-    Console.WriteLine(Row($"Nombre: {v.Nombre}"));
-    Console.WriteLine(Row($"Nombre científico: {v.NombreCientifico?.Nombre ?? "-"}"));
-    Console.WriteLine(Sep());
+            Console.WriteLine(Row($"Resistencias: {v.Resistencia?.Nombre ?? "-"}"));
+            Console.WriteLine(Sep());
 
-    Console.WriteLine(Row($"Porte: {v.Porte?.Nombre ?? "-"}"));
-    Console.WriteLine(Row($"Tamaño de grano: {v.TamanoGrano?.Nombre ?? "-"}"));
-    Console.WriteLine(Row($"Altitud óptima: {v.AltitudOptima?.Nombre ?? "-"}"));
-    Console.WriteLine(Row($"Rendimiento: {v.Potencial?.Nombre ?? "-"}"));
-    Console.WriteLine(Row($"Calidad-altitud: {v.CalidadGrano?.Nombre ?? "-"}"));
-    Console.WriteLine(Sep());
+            Console.WriteLine(Row($"Tiempo de cosecha: {v.TiempoCosecha?.Nombre ?? "-"}"));
+            Console.WriteLine(Row($"Maduración: {v.Maduracion?.Nombre ?? "-"}"));
+            Console.WriteLine(Sep());
 
-    Console.WriteLine(Row($"Resistencias: {v.Resistencia?.Nombre ?? "-"}"));
-    Console.WriteLine(Sep());
+            Console.WriteLine(Row($"Origen/linaje: {v.OrigenLinaje?.Nombre ?? "-"}"));
+            Console.WriteLine(Bottom());
 
-    Console.WriteLine(Row($"Tiempo de cosecha: {v.TiempoCosecha?.Nombre ?? "-"}"));
-    Console.WriteLine(Row($"Maduración: {v.Maduracion?.Nombre ?? "-"}"));
-    Console.WriteLine(Sep());
+            Pausa();
+        }
 
-    Console.WriteLine(Row($"Origen/linaje: {v.OrigenLinaje?.Nombre ?? "-"}"));
-    Console.WriteLine(Bottom());
-
-    Pausa();
-}
-
-    private static void Pausa()
-    {
-        Console.WriteLine("\nPresiona una tecla para continuar...");
-        Console.ReadKey();
-    }
+        private static void Pausa()
+        {
+            Console.WriteLine("\nPresiona una tecla para continuar...");
+            Console.ReadKey();
+        }
 
         // ====== Opción 2: Filtrar ======
         private async Task FiltrarAsync()
@@ -222,7 +223,7 @@ namespace proyectc_.src.Modules.Variedades.UI
                 var op = Console.ReadLine();
 
                 var todas = await _service.ConsultarVariedadAsync();
-                
+
                 if (todas == null || !todas.Any())
                 {
                     Console.WriteLine("No hay variedades para filtrar.");
@@ -460,7 +461,7 @@ namespace proyectc_.src.Modules.Variedades.UI
                     default:
                         Console.WriteLine("Opción no válida.");
                         break;
-                        
+
 
                 }
 
@@ -468,7 +469,7 @@ namespace proyectc_.src.Modules.Variedades.UI
             }
         }
 
-        
-        }
+
     }
+}
 

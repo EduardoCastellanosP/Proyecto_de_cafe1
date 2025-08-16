@@ -1,4 +1,4 @@
-﻿using proyectc_.src.Modules.Variedades.UI;
+﻿using proyectoC_.src.Modules.Variedades.UI;
 using proyectoC_.src.Modules.Usuarios.UI;
 using proyectoC_.src.Shared.Helpers;
 using proyectoC_.src.Modules.Admin.UI;
