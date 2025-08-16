@@ -106,3 +106,6 @@ $RECYCLE.BIN/
 *.tmp
 *.temp
 *.orig
+bin/
+obj/
+.vs/
