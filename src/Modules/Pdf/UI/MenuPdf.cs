@@ -25,7 +25,7 @@ namespace proyectoC_.src.Modules.Pdf.UI
                 Console.WriteLine("1. Typica");
                 Console.WriteLine("2. Bourbon");
                 Console.WriteLine("3. Caturra");
-                Console.WriteLine("4. Tabi");
+                Console.WriteLine("4. Colombia");
                 Console.WriteLine("0. Volver");
                 Console.Write("Seleccione una opción: ");
                 string opcion = Console.ReadLine() ?? "0";
@@ -45,7 +45,7 @@ namespace proyectoC_.src.Modules.Pdf.UI
                         Pausa();
                         break;
                     case "4":
-                        await Tabi.GenerarAsync(_context);
+                        await Colombia.GenerarAsync(_context);
                         Pausa();
                         break;
                     case "0":

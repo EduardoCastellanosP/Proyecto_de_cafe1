@@ -10,27 +10,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace proyectoC_.src.Modules.Pdf.Resources
 {
-    public static class Tabi
+    public static class Colombia
     {
         public static async Task GenerarAsync(AppDbContext context)
         {
-            var typica = await context.Variedades
+            var colombia = await context.Variedades
                 .Include(v => v.TamanoGrano)
                 .Include(v => v.Porte)
                 .Include(v => v.ResistenciaNivel)
                 .Include(v => v.TiempoCosecha)
                 .Include(v => v.Potencial)
                 .Include(v => v.CalidadGrano)
-                .FirstOrDefaultAsync(v => v.Nombre == "Tabi");
+                .FirstOrDefaultAsync(v => v.Nombre == "Colombia");
 
-            if (typica == null)
+            if (colombia == null)
             {
-                Console.WriteLine("❌ No se encontró Typica en la BD.");
+                Console.WriteLine("❌ No se encontró Colombia en la BD.");
                 return;
             }
 
-            string rutaArchivo = "Tabi_cafe.pdf";
-            GenerarPdf(typica.Nombre, rutaArchivo, typica);
+            string rutaArchivo = "Colombia.pdf";
+            GenerarPdf(colombia.Nombre, rutaArchivo, colombia);
         }
 
         private static void GenerarPdf(string nombreVariedad, string rutaArchivo, dynamic variedad)
