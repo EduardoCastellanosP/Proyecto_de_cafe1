@@ -22,7 +22,7 @@ namespace proyectoC_.src.Modules.Usuarios.Application.Services
         {
             return await _repo.GetByIdAsync(id);
         }
-        public async Task RegistrarUsuarioAsync(string nombre, string clave, string rol = "Operador")
+        public async Task RegistrarUsuarioAsync(string nombre, string clave)
         {
             var existentes = await _repo.GetAllAsync();
 

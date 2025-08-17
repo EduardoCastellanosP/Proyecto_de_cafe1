@@ -46,19 +46,38 @@ while (!salir)
         }
 
         case 2: 
-
-            Console.WriteLine("Debe iniciar sesión para acceder a Variedades.");
+             Console.Clear();
+            Console.WriteLine("╔════════════════════════════════════════════════╗");
+            Console.WriteLine("║                                                ║");
+            Console.WriteLine("║                🔒  A C C E S O  🔒             ║");
+            Console.WriteLine("║                                                ║");
+            Console.WriteLine("║   Debe iniciar sesión para acceder a           ║");
+            Console.WriteLine("║   las 🌱 V A R I E D A D E S 🌱 de café.       ║");
+            Console.WriteLine("║                                                ║");
+            Console.WriteLine("╚════════════════════════════════════════════════╝");
             Console.ReadKey();
             {
                 if (!Sesion.UsuarioLogueado)
                 {
-                    Console.WriteLine("⚠ Debes iniciar sesión antes de acceder a Variedades.");
+                    Console.Clear();
+                    Console.WriteLine("╔══════════════════════════════════════════════════╗");
+                    Console.WriteLine("║                                                  ║");
+                    Console.WriteLine("║   ⚠  Debes iniciar sesión antes de acceder a     ║");
+                    Console.WriteLine("║      las 🌱 V A R I E D A D E S 🌱 de café.      ║");
+                    Console.WriteLine("║                                                  ║");
+                    Console.WriteLine("╚══════════════════════════════════════════════════╝");
                     var menuUsuarios = new MenuUsuarios(context);
                     await menuUsuarios.RenderMenu();
 
                     if (!Sesion.UsuarioLogueado)
                     {
-                        Console.WriteLine("❌ No se inició sesión. Acceso denegado.");
+                        Console.Clear();
+                        Console.WriteLine("╔════════════════════════════════════════════════╗");
+                        Console.WriteLine("║                                                ║");
+                        Console.WriteLine("║   ❌  No se inició sesión.  A C C E S O  🚫    ║");
+                        Console.WriteLine("║                  D E N E G A D O               ║");
+                        Console.WriteLine("║                                                ║");
+                        Console.WriteLine("╚════════════════════════════════════════════════╝");
                         Console.ReadKey();
                         break;
                     }

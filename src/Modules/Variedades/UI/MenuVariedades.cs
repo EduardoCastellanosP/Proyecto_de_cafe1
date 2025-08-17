@@ -35,15 +35,25 @@ namespace proyectoC_.src.Modules.Variedades.UI
             while (!regresar)
             {
                 Console.Clear();
-                Console.WriteLine("+==================================+");
-                Console.WriteLine("|          Menu Variedades         |");
-                Console.WriteLine("+==================================+");
-                Console.WriteLine("| 1. 🌱 Ver Variedades de cafe     |");
-                Console.WriteLine("| 2. 🔍 Filtrar                    |");
-                Console.WriteLine("| 3. 📄 Generar PDF                 |");
-                Console.WriteLine("| 4. 🔙 Regresar al menú anterior  |");
-                Console.WriteLine("+==================================+");
-                Console.Write("¿Qué acción desea realizar? ");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("╔════════════════════════════════════════════╗");
+                Console.WriteLine("║              🌱MENÚ VARIEDADES            ║");
+                Console.WriteLine("╠════════════════════════════════════════════╣");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("║ 1. 🌱 Ver variedades de café               ║");
+                Console.WriteLine("║ 2. 🔍 Filtrar                              ║");
+                Console.WriteLine("║ 3. 📄 Generar PDF                          ║");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("║ 4. 🔙 Regresar al menú anterior            ║");
+                Console.ResetColor();
+
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("╚════════════════════════════════════════════╝");
+                Console.ResetColor();
+
+                Console.Write("\n👉 Seleccione una opción: ");
+
 
                 string? opcion = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(opcion))
@@ -85,10 +95,19 @@ namespace proyectoC_.src.Modules.Variedades.UI
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("========== MENU CAFES ==========");
-                Console.WriteLine("1) Ver lista de cafés");
-                Console.WriteLine("2) Ver ficha técnica por ID");
-                Console.WriteLine("0) Volver / Salir");
+                Console.WriteLine("╔════════════════════════════════════════════╗");
+                Console.WriteLine("║               ☕ MENÚ CAFÉS ☕            ║");
+                Console.WriteLine("╠════════════════════════════════════════════╣");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("║ [1] Ver lista de cafés                     ║");
+                Console.WriteLine("║ [2] Ver ficha técnica por ID               ║");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("║ [0] Volver / Salir                         ║");
+                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("╚════════════════════════════════════════════╝");
+                Console.ResetColor();
                 Console.Write("Seleccione una opción: ");
                 var op = Console.ReadLine()?.Trim();
 
@@ -116,7 +135,9 @@ namespace proyectoC_.src.Modules.Variedades.UI
         private static async Task ListarCafesAsync(IVariedadService service)
         {
             Console.Clear();
-            Console.WriteLine("========== CAFES DISPONIBLES ==========\n");
+            Console.WriteLine("╔════════════════════════════════════════════╗");
+            Console.WriteLine("║          ☕  CAFÉS DISPONIBLES            ║");
+            Console.WriteLine("╚════════════════════════════════════════════╝\n");
 
             var todos = (await service.ConsultarVariedadAsync())
                 .OrderBy(v => v.Nombre)
@@ -210,15 +231,20 @@ namespace proyectoC_.src.Modules.Variedades.UI
             while (!volver)
             {
                 Console.Clear();
-                Console.WriteLine("== Filtros de Variedades ==");
-                Console.WriteLine("1. Por nombre (contiene)");
-                Console.WriteLine("2. Por Tamaño de grano ");
-                Console.WriteLine("3. Por Porte ");
-                Console.WriteLine("4. Por Resistencia");
-                Console.WriteLine("5. Por Tiempo de Cosecha ");
-                Console.WriteLine("6. Por Potencial ");
-                Console.WriteLine("7. Por Calidad de Grano ");
-                Console.WriteLine("8. Volver");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("╔════════════════════════════════════╗");
+                Console.WriteLine("║        🔎 Filtros de Variedades    ║");
+                Console.WriteLine("╠════════════════════════════════════╣");
+                Console.WriteLine("║ 1. 📛 Por nombre (contiene)       ║");
+                Console.WriteLine("║ 2. 🌾 Por Tamaño de grano          ║");
+                Console.WriteLine("║ 3. 🌿 Por Porte                    ║");
+                Console.WriteLine("║ 4. 🛡️  Por Resistencia             ║");
+                Console.WriteLine("║ 5. ⏳ Por Tiempo de Cosecha        ║");
+                Console.WriteLine("║ 6. 🚀 Por Potencial                ║");
+                Console.WriteLine("║ 7. 🌟 Por Calidad de Grano         ║");
+                Console.WriteLine("║ 8. 🔙 Volver                       ║");
+                Console.WriteLine("╚════════════════════════════════════╝");
+                Console.ResetColor();
                 Console.Write("Seleccione una opción: ");
                 var op = Console.ReadLine();
 
@@ -253,11 +279,18 @@ namespace proyectoC_.src.Modules.Variedades.UI
                     case "2":
 
                         Console.Clear();
-                        Console.WriteLine("==============================================");
-                        Console.WriteLine("   VARIEDADES POR TAMAÑO (Nombre - Tamaño)    ");
-                        Console.WriteLine("==============================================\n");
-
-                        Console.Write("Ingrese el tamaño de grano (ej. Pequeño, Mediano, Grande): ");
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("╔════════════════════════════════════════════════════╗");
+                        Console.WriteLine("║                                                    ║");
+                        Console.WriteLine("║  🌱 V A R I E D A D E S  P O R  T A M A Ñ O  🌱   ║");
+                        Console.WriteLine("║          (👉 Ingrese el tamaño de grano )          ║");
+                        Console.WriteLine("║            (Pequeño / Mediano / Grande):           ║");       
+                        Console.WriteLine("╚════════════════════════════════════════════════════╝");
+                        Console.ResetColor();
+                       
+                        
+                        Console.ResetColor();
                         var nombreTamano = (Console.ReadLine() ?? string.Empty).Trim();
 
                         var variedades = await _service.GetByTamanoAsync(nombreTamano); // usa tu servicio
@@ -288,11 +321,12 @@ namespace proyectoC_.src.Modules.Variedades.UI
 
                     case "3":
                         Console.Clear();
-                        Console.WriteLine("==============================================");
-                        Console.WriteLine("   VARIEDADES POR PORTE (Nombre - Porte)    ");
-                        Console.WriteLine("==============================================\n");
-
-                        Console.Write("Ingrese el porte (ej. Bajo, Medio, Alto): ");
+                        Console.WriteLine("╔════════════════════════════════════════════════════╗");
+                        Console.WriteLine("║                                                    ║");
+                        Console.WriteLine("║      🌱 V A R I E D A D E S  P O R  PORTE  🌱     ║");
+                        Console.WriteLine("║        (👉 Ingrese el porte de la planta)         ║");
+                        Console.WriteLine("║                (Bajo / Medio / Alto):              ║");
+                        Console.WriteLine("╚════════════════════════════════════════════════════╝");
                         var nombrePorte = (Console.ReadLine() ?? string.Empty).Trim();
 
                         var variedades2 = await _service.GetByPorteAsync(nombrePorte);
@@ -320,11 +354,13 @@ namespace proyectoC_.src.Modules.Variedades.UI
                         break;
 
                     case "4":
-                        Console.Clear();
-                        Console.WriteLine("==============================================");
-                        Console.WriteLine("   VARIEDADES POR RESISTENCIA (Nombre - Resistencia)    ");
-                        Console.WriteLine("==============================================\n");
-
+                         Console.Clear();
+                        Console.WriteLine("╔════════════════════════════════════════════════════╗");
+                        Console.WriteLine("║                                                    ║");
+                        Console.WriteLine("║   🌱 V A R I E D A D E S  P O R  RESISTENCIA  🌱  ║");
+                        Console.WriteLine("║     (👉 Ingrese el nivel de resistencia)           ║");
+                        Console.WriteLine("║                                                    ║");
+                        Console.WriteLine("╚════════════════════════════════════════════════════╝");
                         Console.Write("Ingrese el nivel de resistencia (ej. Resistente a Plagas, Resistente a Roya, Resistente a Sequía): ");
                         var nombreResistencia = (Console.ReadLine() ?? string.Empty).Trim();
 
@@ -355,10 +391,12 @@ namespace proyectoC_.src.Modules.Variedades.UI
                     case "5":
 
                         Console.Clear();
-                        Console.WriteLine("==============================================");
-                        Console.WriteLine("   VARIEDADES POR TIEMPO DE COSECHA (Nombre - Tiempo)    ");
-                        Console.WriteLine("==============================================\n");
-
+                        Console.WriteLine("╔════════════════════════════════════════════════════╗");
+                        Console.WriteLine("║                                                    ║");
+                        Console.WriteLine("║          🌱 VARIEDADES  POR  TIEMPO  🌱           ║");
+                        Console.WriteLine("║       (👉 Ingrese el tiempo de cosecha)            ║");
+                        Console.WriteLine("║                                                    ║");
+                        Console.WriteLine("╚════════════════════════════════════════════════════╝");
                         Console.Write("Ingrese el tiempo de cosecha (ej. 3 meses, 4 meses, 5 meses, 6 meses, 8 meses): ");
                         var tiempoCosecha = (Console.ReadLine() ?? string.Empty).Trim();
 
@@ -388,10 +426,12 @@ namespace proyectoC_.src.Modules.Variedades.UI
 
                     case "6":
                         Console.Clear();
-                        Console.WriteLine("==============================================");
-                        Console.WriteLine("   VARIEDADES POR POTENCIAL (Nombre - Potencial)    ");
-                        Console.WriteLine("==============================================\n");
-
+                        Console.WriteLine("╔════════════════════════════════════════════════════╗");
+                        Console.WriteLine("║                                                    ║");
+                        Console.WriteLine("║         🌱 VARIEDADES  POR  POTENCIAL  🌱         ║");
+                        Console.WriteLine("║            (👉 Ingrese el potencial)               ║");
+                        Console.WriteLine("║                                                    ║");
+                        Console.WriteLine("╚════════════════════════════════════════════════════╝");
                         Console.Write("Ingrese el potencial (ej. Alto Rendimiento, Medio Rendimiento, Bajo Rendimiento): ");
                         var nombrePotencial = (Console.ReadLine() ?? string.Empty).Trim();
 
@@ -422,9 +462,12 @@ namespace proyectoC_.src.Modules.Variedades.UI
                     case "7":
 
                         Console.Clear();
-                        Console.WriteLine("==============================================");
-                        Console.WriteLine("   VARIEDADES POR CALIDAD (Nombre - Calidad)    ");
-                        Console.WriteLine("==============================================\n");
+                        Console.WriteLine("╔════════════════════════════════════════════════════╗");
+                        Console.WriteLine("║                                                    ║");
+                        Console.WriteLine("║         🌱 VARIEDADES  POR  CALIDAD  🌱           ║");
+                        Console.WriteLine("║            (👉 Ingrese la calidad)                 ║");
+                        Console.WriteLine("║                                                    ║");
+                        Console.WriteLine("╚════════════════════════════════════════════════════╝");
 
                         Console.Write("Ingrese la calidad (ej. Excelso, Extra, Premiun, Supremo): ");
                         var nombreCalidad = (Console.ReadLine() ?? string.Empty).Trim();

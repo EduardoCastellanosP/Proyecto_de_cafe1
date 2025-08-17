@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using proyectoC_.src.Modules.Usuarios.Application.Interfaces;
 using proyectoC_.src.Modules.Usuarios.Domain.Entities;
 using proyectoC_.src.Shared.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace proyectoC_.src.Modules.Usuarios.Infrastructure.Repositories
 {

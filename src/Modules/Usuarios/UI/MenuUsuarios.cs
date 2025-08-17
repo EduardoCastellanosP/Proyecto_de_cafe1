@@ -27,15 +27,15 @@ namespace proyectoC_.src.Modules.Usuarios.UI
             bool regresar = false;
             while (!regresar)
             {
-                Console.Clear();
-                Console.WriteLine("+==================================+");
-                Console.WriteLine("|           Menu Usuario           |");
-                Console.WriteLine("+==================================+");
-                Console.WriteLine("| 1. Registrar usuario             |");
-                Console.WriteLine("| 2. Iniciar sesión                |");
-                Console.WriteLine("| 3.Regresar al menu princial      |");
-                Console.WriteLine("+==================================+");
-                Console.WriteLine("¿Qué acción desea realizar?");
+               Console.Clear();
+                Console.WriteLine("╔════════════════════════════════════════════╗");
+                Console.WriteLine("║              👤 M E N Ú  U S U A R I O     ║");
+                Console.WriteLine("╠════════════════════════════════════════════╣");
+                Console.WriteLine("║  1) 📝 Registrar usuario                   ║");
+                Console.WriteLine("║  2) 🔑 Iniciar sesión                      ║");
+                Console.WriteLine("║  3) 🔙 Regresar al menú principal          ║");
+                Console.WriteLine("╚════════════════════════════════════════════╝");
+                Console.Write("👉 ¿Qué acción desea realizar?: ");
                 string? opcion = Console.ReadLine();
                 if (string.IsNullOrWhiteSpace(opcion))
                 {
@@ -47,15 +47,18 @@ namespace proyectoC_.src.Modules.Usuarios.UI
                     {
                         case "1":
                             Console.Clear();
-                            Console.WriteLine("== Registrar Usuario ==");
-                            Console.WriteLine("Ingrese el nombre del usuario:");
+                            Console.WriteLine("╔════════════════════════════════════════════╗");
+                            Console.WriteLine("║            Registrar Usuario               ║");
+                            Console.WriteLine("╠════════════════════════════════════════════╣");
+                            Console.WriteLine("║        Ingrese el nombre del usuario       ║");
+                            Console.WriteLine("║           (letras y / o números):          ║");
+                            Console.WriteLine("╚════════════════════════════════════════════╝");
                             string? nombre = Console.ReadLine();
-                            Console.WriteLine("Ingrese la contraseña (letras y/o números):");
+                            Console.WriteLine("Ingrese la contraseña (letras y / o números):");
                             string? clave = Console.ReadLine();
 
-                            Console.WriteLine("Ingrese el rol");
-                            string? rol = Console.ReadLine();
-                            await service.RegistrarUsuarioAsync(nombre!, clave!, rol!);
+                            
+                            await service.RegistrarUsuarioAsync(nombre!, clave!);
                             Console.WriteLine("✅ Usuario registrado con exito.");
                           // Después de validar credenciales correctamente:
 
@@ -65,10 +68,11 @@ namespace proyectoC_.src.Modules.Usuarios.UI
                             break;
                         case "2":
                             Console.Clear();
-                            Console.WriteLine("== Iniciar Sesión ==");
-
-                            // Solicitar nombre de usuario
-                            Console.WriteLine("Ingrese el nombre de usuario: ");
+                            Console.WriteLine("╔════════════════════════════════════════════╗");
+                            Console.WriteLine("║               Iniciar Sesion               ║");
+                            Console.WriteLine("╠════════════════════════════════════════════╣");
+                            Console.WriteLine("║          Ingrese el nombre del usuario     ║");
+                            Console.WriteLine("╚════════════════════════════════════════════╝");
                             string nombre2 = Console.ReadLine()!;
 
                             if (string.IsNullOrWhiteSpace(nombre2))
