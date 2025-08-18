@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO; // para Path.Combine y FileStream
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using proyectoC_.src.Shared.Context;
 using Microsoft.EntityFrameworkCore;
-    
 
 namespace proyectoC_.src.Modules.Pdf.Resources
 {
@@ -44,9 +44,15 @@ namespace proyectoC_.src.Modules.Pdf.Resources
                 BaseColor verde = new BaseColor(34, 139, 34);
                 BaseColor grisClaro = new BaseColor(240, 240, 240);
                 var tituloFuente = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 30, verde);
-                var labelFuente = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, BaseColor.BLACK);
-                var valorFuente = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
+                var labelFuente  = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, BaseColor.BLACK);
+                var valorFuente  = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
 
+                documento.Add(new Paragraph("\n"));
+                documento.Add(new Paragraph(variedad.Nombre, tituloFuente));
+                documento.Add(new Paragraph($"Coffea arabica var. {variedad.Nombre}.", valorFuente));
+                documento.Add(new Paragraph("\n"));
+
+                // Imagen DESPUÉS del título (desde carpeta 'Imagenes' en la raíz del proyecto)
                 string rutaImagen = Path.Combine("Imagenes", nombreVariedad.ToLower() + ".png");
                 if (File.Exists(rutaImagen))
                 {
@@ -55,11 +61,6 @@ namespace proyectoC_.src.Modules.Pdf.Resources
                     img.Alignment = Element.ALIGN_CENTER;
                     documento.Add(img);
                 }
-
-                documento.Add(new Paragraph("\n"));
-                documento.Add(new Paragraph(variedad.Nombre, tituloFuente));
-                documento.Add(new Paragraph($"Coffea arabica var. {variedad.Nombre}.", valorFuente));
-                documento.Add(new Paragraph("\n"));
 
                 PdfPTable tabla = new PdfPTable(2) { WidthPercentage = 100 };
                 tabla.SetWidths(new float[] { 2, 3 });
@@ -74,6 +75,8 @@ namespace proyectoC_.src.Modules.Pdf.Resources
                     };
                     tabla.AddCell(celda);
                 }
+
+                documento.Add(new Paragraph("\n"));
 
                 Celda("Potencial", labelFuente, grisClaro);
                 Celda(variedad.Potencial?.Nombre ?? "-", valorFuente, BaseColor.WHITE);

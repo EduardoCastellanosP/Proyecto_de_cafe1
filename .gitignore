@@ -31,6 +31,7 @@ artifacts/
 *.userosscache
 *.sln.docstates
 *.userprefs
+/PDFs/*.pdf
 
 ############################
 # VS (.vs folder)

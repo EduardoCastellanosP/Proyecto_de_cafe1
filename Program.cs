@@ -38,7 +38,7 @@ while (!salir)
 
     switch (opm)
     {
-        case 1: // Login
+        case 1: 
         {
             var menuUsuarios = new MenuUsuarios(context);
             await menuUsuarios.RenderMenu(); 
@@ -96,7 +96,7 @@ while (!salir)
             break;
         
 
-        case 4: // Generar PDF (si quieres también exige login)
+        case 4: 
             var menuPdf = new MenuPdf(context);
             await menuPdf.MostrarMenuPdfAsync();
             break;
@@ -113,7 +113,6 @@ while (!salir)
     }
 }
 
-// Estado de sesión súper simple
 public static class Sesion
 {
     public static bool UsuarioLogueado { get; set; } = false;

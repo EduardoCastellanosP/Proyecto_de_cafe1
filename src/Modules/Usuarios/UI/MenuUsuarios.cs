@@ -60,7 +60,7 @@ namespace proyectoC_.src.Modules.Usuarios.UI
                             
                             await service.RegistrarUsuarioAsync(nombre!, clave!);
                             Console.WriteLine("✅ Usuario registrado con exito.");
-                          // Después de validar credenciales correctamente:
+                         
 
 
 
@@ -82,10 +82,10 @@ namespace proyectoC_.src.Modules.Usuarios.UI
                                 break;
                             }
 
-                            // Buscar usuario (por nombre o id, según tu método)
+                           
                             Usuario? usuario = await service.ObtenerUsuarioPorNombreAsync(nombre2); 
                             
-                            // Si tu método es por id, cambia el parámetro por el número y ajusta la lógica
+                            
 
                             if (usuario == null)
                             {
@@ -94,11 +94,11 @@ namespace proyectoC_.src.Modules.Usuarios.UI
                                 break;
                             }
 
-                            // Solicitar contraseña
+                           
                             Console.Write("Ingrese la contraseña: ");
                             string? claveIngresada = Console.ReadLine();
 
-                            // Verificar contraseña
+                            
                             if (usuario.Clave == claveIngresada)
                             {
                                 Console.WriteLine($"✅ Bienvenido, {usuario.Nombre}.");

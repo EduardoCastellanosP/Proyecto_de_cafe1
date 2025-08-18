@@ -33,14 +33,14 @@ namespace proyectoC_.src.Modules.Admin.UI
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(line('╔', '═', '╗'));
-                Console.WriteLine("║" + "           🛠 PANEL ADMIN           ".PadRight(width - 2) + "║");
+                Console.WriteLine("║" + "           🛠 PANEL ADMIN           ".PadRight(width - 1) +  "║");
                 Console.WriteLine(line('╠', '═', '╣'));
                 Console.ResetColor();
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("║  1. ➕ Añadir variedad de café                                   ║");
-                Console.WriteLine("║  2. 🗑 Eliminar variedad de café                                  ║");
-                Console.WriteLine("║  0. ↩ Volver                                                     ║"); 
+                Console.WriteLine("║  1. ➕ Añadir variedad de café         ║");
+                Console.WriteLine("║  2. 🗑 Eliminar variedad de café        ║");
+                Console.WriteLine("║  0. ↩ Volver                           ║"); 
                 Console.ResetColor();
 
                 Console.WriteLine(line('╚', '═', '╝'));

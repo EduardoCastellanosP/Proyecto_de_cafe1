@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO; // necesario para Path.Combine
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using proyectoC_.src.Shared.Context;
@@ -13,7 +14,7 @@ namespace proyectoC_.src.Modules.Pdf.Resources
     {
         public static async Task GenerarAsync(AppDbContext context)
         {
-            var typica = await context.Variedades
+            var caturra = await context.Variedades
                 .Include(v => v.TamanoGrano)
                 .Include(v => v.Porte)
                 .Include(v => v.ResistenciaNivel)
@@ -22,14 +23,14 @@ namespace proyectoC_.src.Modules.Pdf.Resources
                 .Include(v => v.CalidadGrano)
                 .FirstOrDefaultAsync(v => v.Nombre == "Caturra");
 
-            if (typica == null)
+            if (caturra == null)
             {
-                Console.WriteLine("❌ No se encontró Typica en la BD.");
+                Console.WriteLine("❌ No se encontró Caturra en la BD.");
                 return;
             }
 
             string rutaArchivo = "Caturra_cafe.pdf";
-            GenerarPdf(typica.Nombre, rutaArchivo, typica);
+            GenerarPdf(caturra.Nombre, rutaArchivo, caturra);
         }
 
         private static void GenerarPdf(string nombreVariedad, string rutaArchivo, dynamic variedad)
@@ -43,10 +44,16 @@ namespace proyectoC_.src.Modules.Pdf.Resources
                 BaseColor verde = new BaseColor(34, 139, 34);
                 BaseColor grisClaro = new BaseColor(240, 240, 240);
                 var tituloFuente = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 30, verde);
-                var labelFuente = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, BaseColor.BLACK);
-                var valorFuente = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
+                var labelFuente  = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, BaseColor.BLACK);
+                var valorFuente  = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
 
-                string rutaImagen = Path.Combine("Imagenes", nombreVariedad.ToLower() + ".png");
+                documento.Add(new Paragraph("\n"));
+                documento.Add(new Paragraph(variedad.Nombre, tituloFuente));
+                documento.Add(new Paragraph($"Coffea arabica var. {variedad.Nombre}.", valorFuente));
+                documento.Add(new Paragraph("\n"));
+
+           
+                string rutaImagen = Path.Combine("Imagenes", nombreVariedad.ToLower() + ".png" );
                 if (File.Exists(rutaImagen))
                 {
                     iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(rutaImagen);
@@ -54,11 +61,6 @@ namespace proyectoC_.src.Modules.Pdf.Resources
                     img.Alignment = Element.ALIGN_CENTER;
                     documento.Add(img);
                 }
-
-                documento.Add(new Paragraph("\n"));
-                documento.Add(new Paragraph(variedad.Nombre, tituloFuente));
-                documento.Add(new Paragraph($"Coffea arabica var. {variedad.Nombre}.", valorFuente));
-                documento.Add(new Paragraph("\n"));
 
                 PdfPTable tabla = new PdfPTable(2) { WidthPercentage = 100 };
                 tabla.SetWidths(new float[] { 2, 3 });
@@ -73,6 +75,8 @@ namespace proyectoC_.src.Modules.Pdf.Resources
                     };
                     tabla.AddCell(celda);
                 }
+
+                documento.Add(new Paragraph("\n"));
 
                 Celda("Potencial", labelFuente, grisClaro);
                 Celda(variedad.Potencial?.Nombre ?? "-", valorFuente, BaseColor.WHITE);

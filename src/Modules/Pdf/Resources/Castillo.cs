@@ -7,27 +7,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace proyectoC_.src.Modules.Pdf.Resources
 {
-    public static class Bourbon
+    public static class Castillo
     {
         public static async Task GenerarAsync(AppDbContext context)
         {
-            var bourbon = await context.Variedades
+            var castillo = await context.Variedades
                 .Include(v => v.TamanoGrano)
                 .Include(v => v.Porte)
                 .Include(v => v.ResistenciaNivel)
                 .Include(v => v.TiempoCosecha)
                 .Include(v => v.Potencial)
                 .Include(v => v.CalidadGrano)
-                .FirstOrDefaultAsync(v => v.Nombre == "Bourbon");
+                .FirstOrDefaultAsync(v => v.Nombre == "Castillo");
 
-            if (bourbon == null)
+            if (castillo == null)
             {
-                Console.WriteLine("❌ No se encontró Bourbon en la BD.");
+                Console.WriteLine("❌ No se encontró Castillo en la BD.");
                 return;
             }
 
-            string rutaArchivo = "Bourbon_cafe.pdf";
-            GenerarPdf(bourbon.Nombre, rutaArchivo, bourbon);
+            string rutaArchivo = "Castillo_cafe.pdf";
+            GenerarPdf(castillo.Nombre, rutaArchivo, castillo);
         }
 
         private static void GenerarPdf(string nombreVariedad, string rutaArchivo, dynamic variedad)
@@ -44,12 +44,11 @@ namespace proyectoC_.src.Modules.Pdf.Resources
                 var labelFuente = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 11, BaseColor.BLACK);
                 var valorFuente = FontFactory.GetFont(FontFactory.HELVETICA, 11, BaseColor.BLACK);
 
-                
-
                 documento.Add(new Paragraph("\n"));
                 documento.Add(new Paragraph(variedad.Nombre, tituloFuente));
                 documento.Add(new Paragraph($"Coffea arabica var. {variedad.Nombre}.", valorFuente));
                 documento.Add(new Paragraph("\n"));
+
                 string rutaImagen = Path.Combine("Imagenes", nombreVariedad.ToLower() + ".png");
                 if (File.Exists(rutaImagen))
                 {
@@ -71,9 +70,8 @@ namespace proyectoC_.src.Modules.Pdf.Resources
                         BorderColor = BaseColor.LIGHT_GRAY
                     };
                     tabla.AddCell(celda);
-                }documento.Add(new Paragraph("\n"));
-
-
+                }
+                documento.Add(new Paragraph("\n"));
 
                 Celda("Potencial", labelFuente, grisClaro);
                 Celda(variedad.Potencial?.Nombre ?? "-", valorFuente, BaseColor.WHITE);
@@ -96,4 +94,3 @@ namespace proyectoC_.src.Modules.Pdf.Resources
         }
     }
 }
-

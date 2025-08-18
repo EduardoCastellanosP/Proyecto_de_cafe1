@@ -21,13 +21,22 @@ namespace proyectoC_.src.Modules.Pdf.UI
             while (!salir)
             {
                 Console.Clear();
-                Console.WriteLine("== Menú PDF Variedades de Café ==");
-                Console.WriteLine("1. Typica");
-                Console.WriteLine("2. Bourbon");
-                Console.WriteLine("3. Caturra");
-                Console.WriteLine("4. Colombia");
-                Console.WriteLine("0. Volver");
-                Console.Write("Seleccione una opción: ");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("╔══════════════════════════════════════════════════════╗");
+                Console.WriteLine("║        📄  M E N Ú   P D F — V A R I E D A D E S     ║");
+                Console.WriteLine("║                   D E   C A F É                      ║");
+                Console.WriteLine("╠══════════════════════════════════════════════════════╣");
+                Console.ResetColor();
+                Console.WriteLine("║  1) Typica            ☕                             ║");
+                Console.WriteLine("║  2) Bourbon           🫘                              ║");
+                Console.WriteLine("║  3) Caturra           🌱                             ║");
+                Console.WriteLine("║  4) Colombia          🇨🇴                              ║");
+                Console.WriteLine("║  5) Castillo          🌾                              ║");
+                Console.WriteLine("║  6) Generar todos los PDFs  🖨️                       ║");
+                Console.WriteLine("║  0) Volver            ↩                              ║");
+                Console.WriteLine("╚══════════════════════════════════════════════════════╝");
+                Console.Write("👉 Selecciona una opción: ");
+
                 string opcion = Console.ReadLine() ?? "0";
 
                 switch (opcion)
@@ -46,6 +55,14 @@ namespace proyectoC_.src.Modules.Pdf.UI
                         break;
                     case "4":
                         await Colombia.GenerarAsync(_context);
+                        Pausa();
+                        break;
+                    case "5":
+                        await Castillo.GenerarAsync(_context);
+                        Pausa();
+                        break;
+                    case "6":
+                        await VariedadPdf.GenerarTodasAsync(_context);
                         Pausa();
                         break;
                     case "0":
