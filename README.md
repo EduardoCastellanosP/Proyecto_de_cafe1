@@ -17,7 +17,9 @@ Explora, filtra y genera fichas técnicas en PDF de variedades de café cultivad
 * Imágenes y PDFs
 * Solución de problemas
 ____________________________________________________________________________________________________
-
+TABLA DE RELACIONES
+https://dbdiagram.io/d/68a2a00d1d75ee360af70f49
+___________________________________________________________________________________________________
 📖 Descripción
 
 Colombian Coffee es una aplicación de consola en C# (.NET 9) que permite:
